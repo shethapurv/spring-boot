@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reddis-db
+  labels:
+    app: reddis-db
+spec:
+  selector:
+    matchLabels:
+      app: reddis-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: reddis-db
+    spec:
+      containers:
+        - name: reddis-db
+          image: redis
+          imagePullPolicy: Never
+          ports:
+          - protocol: TCP
+            containerPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visit-counter
+  labels:
+    app: visit-counter
+spec:
+  selector:
+    matchLabels:
+      app: visit-counter
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: visit-counter
+    spec:
+      containers:
+        - name: visit-counter
+          image: redis-counter-service:v0.5
+          imagePullPolicy: Never
+          ports:
+          - protocol: TCP
+            containerPort: 8080
+
+
