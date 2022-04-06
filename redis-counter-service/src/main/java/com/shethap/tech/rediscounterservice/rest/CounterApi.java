@@ -19,10 +19,10 @@ public class CounterApi {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/increment")
-    public Counter incrementCount() {
+    public String incrementCount() {
         Counter counter = counterService.increment();
         log.info("counter is -> " + counter.getCount());
-        return counter;
+        return "This is the " + counter.getCount() + " visitor";
 
     }
 
