@@ -1,0 +1,10 @@
+graphql:
+  spqr:
+    gui:
+      enabled: true
+      pageTitle: Hello World
+      target-endpoint: /graphql
+      endpoint: /playground
+    base-packages: com.shethap.tech.graphql
+
+
