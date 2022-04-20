@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-graphql-service
+  labels:
+    app: hello-graphql-service
+spec:
+  selector:
+    matchLabels:
+      app: hello-graphql-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-graphql-service
+    spec:
+      containers:
+        - name: hello-graphql-service-container
+          image: hello-graphql-service
+          imagePullPolicy: Never
+          ports:
+          - protocol: TCP
+            containerPort: 8080
+
+
