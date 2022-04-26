@@ -1,0 +1,8 @@
+type Query {
+    users(nameFilter: String): [User]
+}
+
+type User {
+    name: String
+    id: Int
+}
