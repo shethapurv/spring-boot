@@ -1,9 +1,6 @@
 package com.shethap.tech.graphql.datafetcher;
 
-import com.netflix.graphql.dgs.DgsComponent;
-import com.netflix.graphql.dgs.DgsMutation;
-import com.netflix.graphql.dgs.DgsQuery;
-import com.netflix.graphql.dgs.InputArgument;
+import com.netflix.graphql.dgs.*;
 import com.shethap.tech.graphql.model.User;
 
 import java.util.List;
@@ -30,6 +27,7 @@ public class UserDataFetcher {
     }
 
     @DgsMutation
+    @DgsData(parentType = "Mutation", field = "deleteUser")
     public boolean deleteUser(@InputArgument Integer id) {
         boolean isUserRemoved = Boolean.FALSE;
         if(users.stream().filter(s -> s.getId() == id ).count() == 0)
